@@ -1,0 +1,1 @@
+Hello. How are you? I'm fine, thank you. And you? since the global can be modified in all fun

@@ -1,0 +1,25 @@
+on:
+  push:
+    branches:
+      - main
+
+name: "Trigger: Push action"
+permissions: {}
+
+jobs:
+  writegood:
+    name: WriteGood
+    runs-on: ubuntu-latest
+    steps:
+      - run: sudo npm install -g write-good
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: ls ${{ github.workspace }}
+      - run: npx write-good *.md
+  shellcheck:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
